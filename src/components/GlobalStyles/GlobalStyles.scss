@@ -1,9 +1,13 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
 :root {
+    --default-layout-header-height: 60px;
+    --default-layout-width: 1150px;
 }
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 html {
     font-size: 62.5%; //để dung các thẻ con 1.3rem , 1.4rem, 1.6 rem
