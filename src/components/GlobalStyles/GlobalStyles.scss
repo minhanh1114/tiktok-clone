@@ -3,6 +3,8 @@
 :root {
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+    --black: #000;
+    --text-color: #333;
 }
 * {
     box-sizing: border-box;
@@ -17,4 +19,14 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed; // tối ưu tốc độ hiện thị font
+}
+input,
+button,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }
