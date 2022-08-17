@@ -3,7 +3,7 @@
     --search-height: 46px;
     --search-top-space: 9px;
     --search-button-width: 52px;
-    --primary-color: rgba(254, 44, 85, 1);
+
     width: 100%;
     height: var(--default-layout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
@@ -16,7 +16,8 @@
     align-items: center;
     justify-content: space-between;
 }
-.logo {
+.search-result {
+    width: 361px;
 }
 .search {
     display: flex;
@@ -50,6 +51,14 @@
         border: 1.5px solid rgba(22, 24, 35, 0.2);
     }
 }
+
+.lable-search-acount {
+    font-size: 1.6rem;
+    color: var(--text-fade);
+    font-weight: 600;
+    padding: 5px 12px;
+}
+
 .clear,
 .loading {
     position: absolute;
@@ -71,4 +80,7 @@
     }
 }
 .action {
+}
+.upload {
+    margin-left: 8px;
 }

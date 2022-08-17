@@ -3,8 +3,10 @@
 :root {
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+    --primary-color: rgba(254, 44, 85, 1);
     --black: #000;
-    --text-color: #333;
+    --text-color: rgba(22, 24, 35, 1);
+    --text-fade: rgba(22, 24, 35, 0.5);
 }
 * {
     box-sizing: border-box;
