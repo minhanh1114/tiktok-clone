@@ -13,12 +13,23 @@
     border: 1px solid transparent;
     + .wrapper {
         margin-left: 16px;
-        // 2 btn cạnh nhau
+        // 2 btn cạnh nhau 20Đ
     }
     &.disable {
         opacity: 0.5;
         pointer-events: none;
     }
+}
+.icon + .title {
+    margin-left: 8px;
+}
+.title + .icon {
+    margin-left: 8px;
+}
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: left;
 }
 
 //Button Style

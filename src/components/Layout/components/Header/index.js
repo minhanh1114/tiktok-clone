@@ -5,17 +5,41 @@ import Button from '~/components/Button';
 import images from '~/assets/images';
 import Tippy from '@tippyjs/react/headless'; // different import path!
 import { Wapper as PopperWapper } from '~/components/Popper';
+import Menu from '~/components/Popper/Menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faSpinner,
+    faMagnifyingGlass,
+    faPlus,
+    faEllipsisVertical,
+    faLanguage,
+    faCircleQuestion,
+    faKeyboard,
+} from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 const cx = classNames.bind(styles);
-
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([]);
-        }, 0);
+        }, 1000);
     }, []);
     return (
         <header className={cx('wrapper')}>
@@ -57,6 +81,12 @@ function Header() {
                         <span className={cx('upload')}>Upload</span>
                     </Button>
                     <Button primary>Log in</Button>
+
+                    <Menu data={MENU_ITEMS}>
+                        <span className={cx('more-menu')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </span>
+                    </Menu>
                 </div>
             </div>
         </header>

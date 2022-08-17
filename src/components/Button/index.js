@@ -8,6 +8,7 @@ function Button({
     to,
     href,
     children,
+    className,
     primary = false,
     outline = false,
     text = false,
@@ -16,6 +17,8 @@ function Button({
     medium = false,
     large = false,
     disable = false,
+    lefticon = false,
+    rightticon = false,
     onClick,
     ...passProps
 }) {
@@ -42,9 +45,11 @@ function Button({
         Props.href = href;
         Comp = 'a';
     }
+
     return (
         <Comp
             className={cx('wrapper', {
+                [className]: className,
                 primary: primary,
                 outline: outline,
                 small: small,
@@ -52,10 +57,14 @@ function Button({
                 text: text,
                 rounded: rounded,
                 disable: disable,
+                lefticon: lefticon,
+                rightticon: rightticon,
             })}
             {...Props}
         >
-            <span>{children}</span>
+            {lefticon && <span className={cx('icon')}>{lefticon}</span>}
+            <span className={cx('title')}>{children}</span>
+            {rightticon && <span className={cx('icon')}>{rightticon}</span>}
         </Comp>
     );
 }
