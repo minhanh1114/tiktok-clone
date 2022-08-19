@@ -7,6 +7,7 @@
     --black: #000;
     --text-color: rgba(22, 24, 35, 1);
     --text-fade: rgba(22, 24, 35, 0.5);
+    --default-layout-horizontal-space: 24px;
 }
 * {
     box-sizing: border-box;
@@ -31,4 +32,20 @@ button,
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+//custom tippy
+body {
+    .tippy-box {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-content {
+        padding: 8px 9px;
+    }
 }

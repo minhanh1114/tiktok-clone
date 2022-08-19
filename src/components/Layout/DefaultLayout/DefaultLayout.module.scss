@@ -7,6 +7,7 @@
     min-height: 100vh;
     display: flex;
     width: var(--default-layout-width);
+    padding: 0 var(--default-layout-horizontal-space);
 }
 .content {
     flex: 1;
