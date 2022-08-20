@@ -19,13 +19,13 @@ import {
     faLanguage,
     faCircleQuestion,
     faKeyboard,
-    faCloudArrowUp,
     faUser,
     faGear,
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { faMessage } from '@fortawesome/free-regular-svg-icons';
+import { MessageIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -115,33 +115,31 @@ function Header() {
                 </HeadlessTippy>
 
                 <div className={cx('action')}>
+                    <Button text>
+                        <FontAwesomeIcon icon={faPlus} />
+                        <span className={cx('upload')}>Upload</span>
+                    </Button>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video " placement="bottom">
+                            <Tippy delay={[0, 150]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <MessageIcon className={cx('active-message-icon')} />
                                 </button>
                             </Tippy>
-                            <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button>
                         </>
                     ) : (
                         <>
-                            <Button text>
-                                <FontAwesomeIcon icon={faPlus} />
-                                <span className={cx('upload')}>Upload</span>
-                            </Button>
                             <Button primary>Log in</Button>
                         </>
                     )}
                     <Menu data={currentUser ? MENU_USER : MENU_ITEMS}>
                         {currentUser ? (
                             <div>
-                                <img
-                                    src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/209cd75d867b19c0d17d74178d63bc0f~c5_100x100.jpeg?x-expires=1661004000&x-signature=tIbEMgQ3V90bCdmP9Yg1%2FJI%2FrdE%3D"
+                                <Image
+                                    src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/6cc0badd10117384094ff503c0fca9d9~c5_100x100.jpeg?x-expires=1661180400&x-signature=X5Nkc4lA8keGyRjst3VveJlOpB8%3D"
                                     className={cx('img-user')}
                                     alt="nguyen van a"
+                                    // customFallBack="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/64dedf6ebe11a4bd1cede32de3020172~c5_100x100.jpeg?x-expires=1661180400&x-signature=ihhiaz0W2vLwdex4DqnwiNv0jkw%3D"
                                 />
                             </div>
                         ) : (

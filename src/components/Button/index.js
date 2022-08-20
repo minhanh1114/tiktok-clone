@@ -45,7 +45,7 @@ function Button({
         Props.href = href;
         Comp = 'a';
     }
-
+    console.log(className);
     return (
         <Comp
             className={cx('wrapper', {
