@@ -1,19 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import images from '~/assets/images';
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-
-import { Wapper as PopperWapper } from '~/components/Popper';
 import Menu from '~/components/Popper/Menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
     faLanguage,
@@ -23,10 +16,9 @@ import {
     faGear,
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
 import { MessageIcon } from '~/components/Icons';
 import Image from '~/components/Image';
-
+import Search from '../Search';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -51,13 +43,6 @@ const MENU_ITEMS = [
     },
 ];
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 1000);
-    }, []);
-
     const currentUser = true;
     const MENU_USER = [
         {
@@ -85,35 +70,7 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="img_logo" />
                 </div>
-                <HeadlessTippy
-                    visible={searchResult.length > 0}
-                    interactive
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWapper>
-                                {searchResult.map((search, index) => (
-                                    <li key={index}>{search}</li>
-                                ))}
-                                <p className={cx('lable-search-acount')}> Tai khoan</p>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search account and videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
-
+                <Search />
                 <div className={cx('action')}>
                     <Button text>
                         <FontAwesomeIcon icon={faPlus} />
@@ -124,6 +81,7 @@ function Header() {
                             <Tippy delay={[0, 150]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <MessageIcon className={cx('active-message-icon')} />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
