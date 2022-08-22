@@ -7,7 +7,6 @@ import { useEffect, useState, useRef } from 'react';
 import { SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
-import { click } from '@testing-library/user-event/dist/click';
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -16,11 +15,23 @@ function Search() {
     const [searchText, setSearchText] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 1000);
-    }, []);
+        if (!searchText.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchText)}&type=less`)
+            .then((Response) => Response.json())
+            .then((Response) => {
+                setSearchResult(Response.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchText]);
     const clickClear = () => {
         setSearchText('');
         setSearchResult([]);
@@ -36,13 +47,10 @@ function Search() {
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWapper>
-                        {searchResult.map((search, index) => (
-                            <li key={index}>{search}</li>
-                        ))}
                         <p className={cx('lable-search-acount')}>Accounts</p>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResult.map((account) => (
+                            <AccountItem key={account.id} data={account} />
+                        ))}
                     </PopperWapper>
                 </div>
             )}
@@ -55,14 +63,20 @@ function Search() {
                     spellCheck={false}
                     ref={refInput}
                     onFocus={() => setShowResult(true)}
-                    onChange={(event) => setSearchText(event.target.value)}
+                    onChange={(event) => {
+                        if (event.target.value.startsWith(' ')) {
+                            setSearchText('');
+                        } else {
+                            setSearchText(event.target.value);
+                        }
+                    }}
                 />
-                {searchText && (
+                {searchText && !loading && (
                     <button className={cx('clear')} onClick={clickClear}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                 <button className={cx('search-btn')}>
                     <SearchIcon />
                 </button>

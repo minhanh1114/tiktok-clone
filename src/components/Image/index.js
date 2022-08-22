@@ -9,7 +9,6 @@ const Image = forwardRef(({ src, alt, className, customFallBack = images.noImage
     const onError = () => {
         setfallback(customFallBack);
     };
-    console.log(className);
     return (
         <>
             <img

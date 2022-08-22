@@ -45,9 +45,19 @@
 .loading {
     position: absolute;
     right: calc(var(--search-button-width) + 8px);
-    top: 50%;
-    transform: translateY(-50%);
+    top: 35%;
     color: rgba(22, 24, 35, 0.34);
+}
+.loading {
+    animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 .search-btn {
     display: flex;
