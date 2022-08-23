@@ -19,6 +19,11 @@ function useDebounce(value, delay) {
 
 export default useDebounce;
 // lần đàu tiền là 1 chuỗi rỗng  sẽ chuỗi rỗng,
-//2 là 1 kí tự dc chạy vào hàm useDebounce()  và dc xét initState , chạy xuống useEffect -> callback đợi 500ms sau xét, nhưng nhập tiếp khiến Component bị render nên chạy vào
-//ClearTimeout xóa bỏ lần đơi xét trc,
-// 3 nhập kí tứ tiếp theo nhưng dừng lại vẫn xét initState='' trước đó, chạy xuống useEffect -> callback đợi 500ms sau sẽ xét lên, gõ kí tự tiếp sẽ k bị render
+
+//lần 2 khi giá trị trong input n thay đổi , n sẽ set lại searchText dẫn đến Component bị render, khi render lại
+//2 là 1 kí tự dc gõ và xét lại searchText khi searchText bị thay đổi nên value trong bị thay đổi nên clearupFn vào hàm useDebounce()  và dc xét initState , chạy xuống useEffect -> callback đợi 500ms sau xét, nhưng nhập tiếp khiến Component bị render nên chạy vào
+//ClearTimeout xóa bỏ lần trc đó đi,
+// 3 nhập kí tứ tiếp theo nhưng dừng lại vẫn xét initState='' trước đó, chạy xuống useEffect -> callback đợi 500ms sau sẽ xét lên, nếu k gõ kí tự tiếp sẽ k bị render
+
+//Trong hàm useDebounce, mỗi khi value trong mảng deps thay đổi thì clearnup function được gọi,
+// nên sẽ clear timeout trước đó đi (huỷ những lần trước đi). Vì vậy, cho tới khi người dùng ngừng gõ 500ms API mới được gọi
