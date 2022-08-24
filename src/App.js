@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
@@ -34,3 +35,14 @@ function App() {
 }
 
 export default App;
+
+// ở trang App.js  này tạo ra cơ chế router sẽ có nội dung là các publicRouter mô tả như dưới,
+// khi link (url)  là trang nào n sẽ sử dụng Route đó
+{
+    /* <Routes>
+    <Route element ={....}/>
+    <Route element ={....}/>
+    <Route element ={....}/>
+    ...............
+</Routes>  */
+}

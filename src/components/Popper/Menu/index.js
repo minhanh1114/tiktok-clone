@@ -9,9 +9,10 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 function Menu({ children, data = [] }) {
     const [history, setHistory] = useState([{ items: data }]); // set giá trị initial là 1 mảng với phần tử đầu tiên là 1 object với key(items) value là mảng data
-    const current = history[history.length - 1]; // lấy phàn tử cuối cùng của mảng history
+    const current = history[history.length - 1]; // lấy phàn tử cuối cùng của mảng history để set lên menu (mục đích luôn sử dụng phần tử cuối của mảng để render ra ngoài, vì khi lick vào phần tử có phần tử con, n sẽ add thêm vào mảng history)
     return (
         <Tippy
+            hideOnClick={false}
             delay={[0, 600]}
             interactive
             offset={[15, 8]} //chiều ngang, chiều cao
@@ -35,7 +36,7 @@ function Menu({ children, data = [] }) {
                                     items={item}
                                     onClick={() => {
                                         if (isParent) {
-                                            setHistory((prev) => [...prev, item.children]);
+                                            setHistory((prev) => [...prev, item.children]); // sét thêm phần tử con vào history tạo thành 1 mảng với 2 phần tử
                                         }
                                     }}
                                 />
@@ -44,7 +45,7 @@ function Menu({ children, data = [] }) {
                     </PopperWapper>
                 </div>
             )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))} // khi menu bị bị ẩn sẽ trở về mảng ban đầu (cắt)
         >
             {children}
         </Tippy>
