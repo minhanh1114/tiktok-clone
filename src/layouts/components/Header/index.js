@@ -4,7 +4,7 @@ import Button from '~/components/Button';
 import images from '~/assets/images';
 import Tippy from '@tippyjs/react';
 import { Link } from 'react-router-dom';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import 'tippy.js/dist/tippy.css';
 import Menu from '~/components/Popper/Menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -71,7 +71,7 @@ function Header() {
         // this by creating a new parentNode context
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="img_logo" />
                 </Link>
                 <div className={cx('search-parent')}>

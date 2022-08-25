@@ -1,6 +1,6 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import AccountItem from '~/components/AccountItem';
-import * as searchService from '~/apiService/searchService';
+import * as searchService from '~/Services/searchService';
 import { useDebounce } from '~/hooks';
 import { Wapper as PopperWapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
