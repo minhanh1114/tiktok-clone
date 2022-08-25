@@ -21,27 +21,30 @@ function Menu({ children, data = [] }) {
                 <div className={cx('content')} tabIndex="-1" {...attrs}>
                     <PopperWapper className={cx('menu-prop')}>
                         {history.length > 1 && (
-                            <Header
+                            <Header // thêm header phía trên cho languages
                                 title="Languages"
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
                             />
                         )}
-                        {current.items.map((item, index) => {
-                            const isParent = item.children;
-                            return (
-                                <MenuItem
-                                    key={index}
-                                    items={item}
-                                    onClick={() => {
-                                        if (isParent) {
-                                            setHistory((prev) => [...prev, item.children]); // sét thêm phần tử con vào history tạo thành 1 mảng với 2 phần tử
-                                        }
-                                    }}
-                                />
-                            );
-                        })}
+
+                        <div className={cx('menu-body')}>
+                            {current.items.map((item, index) => {
+                                const isParent = item.children;
+                                return (
+                                    <MenuItem
+                                        key={index}
+                                        items={item}
+                                        onClick={() => {
+                                            if (isParent) {
+                                                setHistory((prev) => [...prev, item.children]); // sét thêm phần tử con vào history tạo thành 1 mảng với 2 phần tử
+                                            }
+                                        }}
+                                    />
+                                );
+                            })}
+                        </div>
                     </PopperWapper>
                 </div>
             )}

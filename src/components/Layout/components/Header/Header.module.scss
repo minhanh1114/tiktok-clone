@@ -8,7 +8,12 @@
     height: var(--default-layout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
     justify-content: center;
+    background-color: white;
 }
 .inner {
     width: var(--default-layout-width);

@@ -67,12 +67,16 @@ function Header() {
         },
     ];
     return (
+        // Using a wrapper <div> in Component Search fix warning Tippy tag around the reference element solves
+        // this by creating a new parentNode context
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="img_logo" />
                 </Link>
-                <Search />
+                <div className={cx('search-parent')}>
+                    <Search />
+                </div>
                 <div className={cx('action')}>
                     <Button text>
                         <FontAwesomeIcon icon={faPlus} />

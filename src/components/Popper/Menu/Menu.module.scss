@@ -20,6 +20,11 @@
 .menu-prop {
     padding-bottom: 8px;
 }
+.menu-body {
+    overflow-y: overlay;
+
+    max-height: 600px;
+}
 //header
 .header {
     display: flex;

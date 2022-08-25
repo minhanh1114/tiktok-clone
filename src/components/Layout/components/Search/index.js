@@ -28,7 +28,6 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true); // kịch hoạt loading
             const results = await searchService.search(debouncedValue);
-            console.log(results);
             setSearchResult(results);
             setLoading(false); // trả giá trị về thì ẩn loading
         };
@@ -48,6 +47,7 @@ function Search() {
     };
     return (
         <HeadlessTippy
+            // appendTo={() => document.body}
             visible={showResult && searchResult.length > 0}
             interactive
             render={(attrs) => (
