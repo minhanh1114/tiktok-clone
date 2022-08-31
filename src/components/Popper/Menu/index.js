@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
@@ -10,6 +11,7 @@ const cx = classNames.bind(styles);
 function Menu({ children, data = [] }) {
     const [history, setHistory] = useState([{ items: data }]); // set giá trị initial là 1 mảng với phần tử đầu tiên là 1 object với key(items) value là mảng data
     const current = history[history.length - 1]; // lấy phàn tử cuối cùng của mảng history để set lên menu (mục đích luôn sử dụng phần tử cuối của mảng để render ra ngoài, vì khi lick vào phần tử có phần tử con, n sẽ add thêm vào mảng history)
+    console.log(current);
     return (
         <Tippy
             hideOnClick={false}
@@ -20,9 +22,9 @@ function Menu({ children, data = [] }) {
             render={(attrs) => (
                 <div className={cx('content')} tabIndex="-1" {...attrs}>
                     <PopperWapper className={cx('menu-prop')}>
-                        {history.length > 1 && (
+                        {history.length > 1 && ( // kiểm tr history. length >1 tức là kiểm tra xem mảng nếu có phàn tử  tiếp theo(2,3,4....) thì n sẽ hiện header này
                             <Header // thêm header phía trên cho languages
-                                title="Languages"
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
@@ -54,5 +56,9 @@ function Menu({ children, data = [] }) {
         </Tippy>
     );
 }
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    data: PropTypes.array,
+};
 
 export default Menu;
