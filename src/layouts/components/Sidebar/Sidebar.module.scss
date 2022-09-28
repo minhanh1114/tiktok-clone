@@ -2,3 +2,32 @@
     width: 356px;
     padding: 20px 0 26px 8px;
 }
+
+//discover tag
+.discover {
+    padding: 16px 8px 8px 8px;
+}
+.title {
+    color: var(--text-color-gray);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    padding-bottom: 16px;
+}
+.tag-icon__container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: rgba(22, 24, 35, 0.12);
+        content: '';
+        width: 100%;
+    }
+}

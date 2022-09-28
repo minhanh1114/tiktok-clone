@@ -1,0 +1,20 @@
+.footer-container {
+    padding: 8px 0px 0px 8px;
+    font-size: 1.2rem;
+}
+.footer-item {
+    display: block;
+    margin-bottom: 8px;
+}
+.copyright,
+.footer-link {
+    margin: 5px 6px 0px 0px;
+    display: inline-block;
+    color: var(--text-fade);
+    font-weight: 600;
+}
+.footer-link {
+    &:hover {
+        text-decoration: underline;
+    }
+}

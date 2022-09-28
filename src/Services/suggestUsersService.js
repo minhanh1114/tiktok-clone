@@ -1,11 +1,11 @@
 import * as httpRequest from '~/untils/httpRequest';
 //search request
-export const search = async (query, type = 'less') => {
+export const suggestUser = async (numPage, numPer_page) => {
     try {
-        const res = await httpRequest.get(`/users/search`, {
+        const res = await httpRequest.get(`/users/suggested`, {
             params: {
-                q: query,
-                type,
+                page: numPage,
+                per_page: numPer_page,
             },
         });
         return res.data; // chấm data chấm vào oject mà người cung cấp API định nghĩa ra

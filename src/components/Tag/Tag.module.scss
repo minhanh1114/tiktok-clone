@@ -1,0 +1,29 @@
+.tag {
+    border: 1px solid rgba(22, 24, 35, 0.2);
+    display: inline-block;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 12px;
+    background: rgb(255, 255, 255);
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    margin-right: 9px;
+    max-width: 100%;
+}
+.icon,
+.title {
+}
+.title {
+    font-size: 1.4rem;
+    color: var(--text-fade);
+    margin-left: 6px;
+    line-height: 1.6rem;
+    overflow: hidden; // ẩn khi nội dung vượt quá
+    text-overflow: ellipsis; // hiện thị dấu chấm khi chữ vượt quá
+    white-space: nowrap; // loại bỏ thuộc tính mặc đinh normal , nowrap xét cho đoạn văn bản đó chỉ dc phép trên 1 dòng
+}
+.icon {
+    color: var(--text-color);
+    line-height: 1.6rem;
+}

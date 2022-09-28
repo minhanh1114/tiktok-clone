@@ -15,7 +15,7 @@ function AccountItem({ data }) {
     const renderPreview = (attrs) => (
         <div className={cx('preview')} tabIndex="-1" {...attrs}>
             <PopperWrapper>
-                <PreviewAccount />
+                <PreviewAccount data={data} />
             </PopperWrapper>
         </div>
     );
@@ -23,16 +23,13 @@ function AccountItem({ data }) {
         <div>
             <Tippy interactive delay={[800, 0]} placement="bottom-start" render={renderPreview}>
                 <Link to={`/@123`} className={cx('account-item')}>
-                    <Image
-                        src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/922058a41c933e9bd8bb7f6e287e03b9.jpeg?x-expires=1662397200&x-signature=YP5suZ3yurGjSOW%2FGQ0dCkFBcPI%3D"
-                        alt="nickname"
-                        className={cx('avatar')}
-                    />
+                    <Image src={data.avatar} alt={data.last_name} className={cx('avatar')} />
                     <div className={cx('item-info')}>
                         <h4 className={cx('nickname')}>
-                            Netflixid <FontAwesomeIcon className={cx('name-icon')} icon={faCheckCircle} />
+                            {data.first_name + data.last_name}
+                            {data.tick && <FontAwesomeIcon className={cx('name-icon')} icon={faCheckCircle} />}
                         </h4>
-                        <p className={cx('name')}> Netflixid Indonesia</p>
+                        <p className={cx('name')}>{data.nickname}</p>
                     </div>
                 </Link>
             </Tippy>
