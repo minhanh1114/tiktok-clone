@@ -1,0 +1,58 @@
+//user video
+.wrapper {
+    display: flex;
+    position: relative;
+    padding: 20px 0px;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        background-color: rgba(22, 24, 35, 0.2);
+    }
+}
+.imgUser {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+.info {
+    margin-left: 8px;
+    width: 624px;
+}
+.info-user {
+    position: relative;
+
+    .button-follow {
+        position: absolute;
+        top: 28px;
+        right: 0;
+    }
+}
+.nickname {
+    font-size: 1.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.name {
+    font-size: 1.4rem;
+}
+.icon {
+    color: var(--color-tick);
+    margin: 0 4px;
+}
+.music-song {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+.name-music {
+    margin-left: 4px;
+    font-weight: 600;
+    font-size: 1.6rem;
+}

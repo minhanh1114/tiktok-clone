@@ -1,6 +1,22 @@
 .wrapper {
     width: 356px;
     padding: 20px 0 26px 8px;
+    overflow-y: scroll;
+    height: 100vh;
+    position: fixed;
+}
+.wrapper *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 5px;
+}
+.wrapper *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.wrapper *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 //discover tag
